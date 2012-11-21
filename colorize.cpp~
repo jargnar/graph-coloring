@@ -61,22 +61,18 @@ void spill(int pos) {
 void simplify() {
 	
 	bool SpillCondition = true;
-	int DeletionIndex = 0;
 	
 	while (Vsize!=1) {
 		
 		for(int j=0; j<Vsize; ++j) {
-			if(Esize[j]<colors) {
-				SpillCondition = false;
-				DeletionIndex = j;
-			}
+			if(Esize[j]<colors) SpillCondition = false;
 		}
 	
 		if(SpillCondition) {
 			spill(0);		
-		} else if (Esize[DeletionIndex]<colors) {
+		} else if (Esize[0]<colors) {
 			printGraph();
-			deleteVertex(V[DeletionIndex]);
+			deleteVertex(V[0]);
 		}
 		
 		SpillCondition = true;
